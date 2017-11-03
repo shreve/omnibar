@@ -1,6 +1,6 @@
 # Omnibar
 
-Omnibar is a tool for quick access to multiple scripts and searches, basically an omnibar.
+Omnibar is a tool for quick access to multiple scripts and searches.
 
 
 ## Installation
