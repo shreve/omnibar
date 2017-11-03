@@ -1,5 +1,7 @@
 # Omnibar
 
+[![Gem Version](https://badge.fury.io/rb/omnibar.svg)](https://badge.fury.io/rb/omnibar)
+
 Omnibar is a tool for quick access to multiple scripts and searches.
 
 
