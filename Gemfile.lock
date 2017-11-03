@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    reginald (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (10.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16.a)
+  rake (~> 10.0)
+  reginald!
+
+BUNDLED WITH
+   1.16.0.pre.2
