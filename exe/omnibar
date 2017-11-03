@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 require 'bundler/setup'
-require 'reginald'
+require 'omnibar'
 
-Reginald::App.new.run
+Omnibar::App.new.run

@@ -1,17 +1,17 @@
-# Reginald
+# Omnibar
 
-Reginald is a tool for quick access to multiple scripts and searches, basically an omnibar.
+Omnibar is a tool for quick access to multiple scripts and searches, basically an omnibar.
 
 
 ## Installation
 
 Install as:
 
-    $ gem install reginald
+    $ gem install omnibar
 
 ## Usage
 
-Run `bin/reginald` and start typing. Use the arrow keys to select the result you like, and press enter to go!
+Run `bin/omnibar` and start typing. Use the arrow keys to select the result you like, and press enter to go!
 
 ## Development
 
@@ -21,7 +21,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/shreve/reginald.
+Bug reports and pull requests are welcome on GitHub at https://github.com/shreve/omnibar.
 
 ## License
 

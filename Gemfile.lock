@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    reginald (0.0.1)
+    omnibar (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -13,8 +13,8 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16.a)
+  omnibar!
   rake (~> 10.0)
-  reginald!
 
 BUNDLED WITH
    1.16.0.pre.2

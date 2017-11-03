@@ -6,7 +6,7 @@ require_relative 'ansi'
 require_relative 'query'
 require_relative 'renderer'
 
-module Reginald
+module Omnibar
   class App
     attr_accessor :input
     attr_accessor :selection

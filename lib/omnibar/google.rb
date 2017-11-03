@@ -1,4 +1,4 @@
-module Reginald
+module Omnibar
   class Google < Query
     def perform!
       param = input.gsub(/\s/, '+')

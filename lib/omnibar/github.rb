@@ -4,7 +4,7 @@ class String
   end
 end
 
-module Reginald
+module Omnibar
   class Github < Query
     def repos
       %w(
@@ -24,7 +24,7 @@ module Reginald
 
     def perform!
       param = result.downcase.gsub(/\s/, '-')
-      open_in_browser "https://github.com/wellopp/#{param}"
+      open_in_browser "https://github.com/#{param}"
     end
   end
 end

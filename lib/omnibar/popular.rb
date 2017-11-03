@@ -1,4 +1,4 @@
-module Reginald
+module Omnibar
   class Popular < Query
     def result
       case input

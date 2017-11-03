@@ -1,4 +1,4 @@
-module Reginald
+module Omnibar
   # This module contains helpers for various ansi-code operations
   module ANSI
     # ANSI color escape codes set the foreground and background colors.

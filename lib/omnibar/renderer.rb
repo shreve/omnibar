@@ -1,4 +1,4 @@
-module Reginald
+module Omnibar
   class Renderer
     attr_reader :input, :results, :selection
 

@@ -1,4 +1,4 @@
-module Reginald
+module Omnibar
   class Query
 
     attr_reader :input
@@ -8,7 +8,7 @@ module Reginald
     end
 
     def self.inherited(subclass)
-      Reginald::App.add_query(subclass)
+      Omnibar::App.add_query(subclass)
       super(subclass)
     end
 

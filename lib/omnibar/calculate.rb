@@ -1,4 +1,4 @@
-module Reginald
+module Omnibar
   class Calculate < Query
     include Math
 

@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "reginald/version"
+require "omnibar/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = 'reginald'
-  spec.version       = Reginald::VERSION
+  spec.name          = 'omnibar'
+  spec.version       = Omnibar::VERSION
   spec.authors       = ['Jacob Evan Shreve']
   spec.email         = ['shreve@umich.edu']
 
   spec.summary       = 'A command line butler'
-  spec.description   = 'Ask reginald, and ye shall receive'
-  spec.homepage      = 'https://github.com/shreve/reginald'
+  spec.description   = 'Ask omnibar, and ye shall receive'
+  spec.homepage      = 'https://github.com/shreve/omnibar'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
