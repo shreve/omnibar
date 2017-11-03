@@ -30,11 +30,11 @@ module Omnibar
     end
 
     def rpad(text, length = ANSI.size[:width])
-      text + (' ' * (length - text.length))
+      text + (' ' * [0, (length - text.length)].max)
     end
 
     def lpad(text, length = ANSI.size[:width])
-      (' ' * (length - text.length)) + text
+      (' ' * [0, (length - text.length)].max) + text
     end
 
     def max_label_length

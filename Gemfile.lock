@@ -2,10 +2,14 @@ PATH
   remote: .
   specs:
     omnibar (0.0.1)
+      dry-configurable (~> 0.7.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    concurrent-ruby (1.0.5)
+    dry-configurable (0.7.0)
+      concurrent-ruby (~> 1.0)
     rake (10.5.0)
 
 PLATFORMS

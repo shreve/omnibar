@@ -20,6 +20,7 @@ module Omnibar
     def initialize
       @input = ''
       @selection = 0
+      Omnibar.load_config
     end
 
     def run
@@ -66,6 +67,7 @@ module Omnibar
     def perform_action!
       visible_queries[selection]&.perform!
       self.input = ""
+      # TODO: after_perform callback
     end
 
     def queries

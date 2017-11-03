@@ -7,19 +7,17 @@ end
 module Omnibar
   class Github < Query
     def repos
-      %w(
-      wellopp/dashboard
-      wellopp/dispatch
-      wellopp/magic-docs
-    )
+      Omnibar.config.github.repos
     end
 
     def result
       repos.each do |repo|
         user, name = repo.split('/')
+        name ||= ''
         return repo if (input & repo or input & user or input & name)
       end
-      nil
+
+      return input if input.match?(/^[\w-]+\/[\w-]+$/)
     end
 
     def perform!
@@ -28,3 +26,6 @@ module Omnibar
     end
   end
 end
+
+# TODO: assume name/name is a github repo
+# TODO: add task for fetching user's repos https://api.github.com/users/:username/repos
