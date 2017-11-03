@@ -1,6 +1,7 @@
 # Omnibar
 
 [![Gem Version](https://badge.fury.io/rb/omnibar.svg)](https://badge.fury.io/rb/omnibar)
+[![Maintainability](https://api.codeclimate.com/v1/badges/986aa321241fbeb4a9e1/maintainability)](https://codeclimate.com/github/shreve/omnibar/maintainability)
 
 Omnibar is a tool for quick access to multiple scripts and searches.
 
