@@ -1,9 +1,16 @@
+# coding: utf-8
 require 'dry-configurable'
+require 'fuzzy_match'
+require 'amatch'
 
 require 'omnibar/version'
 require 'omnibar/app'
 
 require 'omnibar/calculate'
+require 'omnibar/emoji'
+require 'omnibar/spell'
+require 'omnibar/system'
+require 'omnibar/snippet'
 require 'omnibar/github'
 require 'omnibar/popular'
 require 'omnibar/duck_duck_go'
@@ -19,6 +26,12 @@ module Omnibar
   setting :popular do
     setting :sites, []
   end
+
+  setting :spell do
+    setting :dict, '/usr/share/dict/american-english'
+  end
+
+  setting :snippets, 'shrug' => '¯\_(ツ)_/¯'
 
   setting :render do
     setting :prompt, ->(width) { ('-' * width) << '>' }
@@ -38,3 +51,5 @@ module Omnibar
   rescue LoadError => _
   end
 end
+
+FuzzyMatch.engine = :amatch

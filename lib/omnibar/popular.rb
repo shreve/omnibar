@@ -1,5 +1,3 @@
-require 'fuzzy_match'
-
 module Omnibar
   class Popular < Query
     def result

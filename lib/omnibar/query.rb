@@ -22,6 +22,10 @@ module Omnibar
       input
     end
 
+    def copy_to_clipboard(value)
+      `echo "#{value}" | xsel -i --clipboard`
+    end
+
     def open_in_browser(url)
       Thread.new { `xdg-open "#{url}" >/dev/null 2>&1` }
     end

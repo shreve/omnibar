@@ -1,5 +1,7 @@
 module Omnibar
   class Renderer
+    NON_ASCII_REGEX = /[^\x00-\x7F]/.freeze
+
     attr_reader :input, :results, :selection
 
     def initialize(input, results, selection)
@@ -38,15 +40,21 @@ module Omnibar
     end
 
     def rpad(text, length = ANSI.size[:width])
-      text + (' ' * [0, (length - text.length)].max)
+      textlength = text.length + non_ascii_chars(text).length
+      text + (' ' * [0, (length - textlength)].max)
     end
 
     def lpad(text, length = ANSI.size[:width])
-      (' ' * [0, (length - text.length)].max) + text
+      textlength = text.length + non_ascii_chars(text).length
+      (' ' * [0, (length - textlength)].max) + text
     end
 
     def max_label_length
       @mll ||= results.map(&:first).map(&:length).max || 10
+    end
+
+    def non_ascii_chars(string)
+      string.chars.select { |c| c.match?(NON_ASCII_REGEX) }
     end
   end
 end

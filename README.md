@@ -36,6 +36,16 @@ end
 | render.highlight.bg | Symbol | `:yellow` |
 | events.after_perform | Lambda | `-> {}` |
 
+## OS Limitations
+
+This gem has been developed on Ubuntu, and should work on most linux distributions.
+All the code is in ruby, but there are several dependencies that are linux-only.
+
+| Library | Usage |
+|---------|-------|
+| xdg-open | Opening urls and files |
+| GNU aspell | Spell checking and suggestions |
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/shreve/omnibar.

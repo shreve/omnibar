@@ -14,7 +14,7 @@ module Omnibar
     end
 
     def perform!
-      `echo #{value} | xsel -i --clipboard`
+      copy_to_clipboard value
     end
 
     def pi

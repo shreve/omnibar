@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'dry-configurable', '~> 0.7.0'
   spec.add_dependency 'fuzzy_match', '~> 2.1.0'
+  spec.add_dependency 'amatch'
+  spec.add_dependency 'ffi-aspell'
 
   spec.add_development_dependency 'bundler', '~> 1.16.a'
   spec.add_development_dependency 'rake', '~> 10.0'
