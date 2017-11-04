@@ -49,6 +49,8 @@ end
 | Config Key | Type | Default |
 |------------|------|---------|
 | github.repos | Array | `[]` |
+| popular.sites | Array | `[]` |
+| snippets | Hash | `{ 'shrug' => '¯\_(ツ)_/¯' }` |
 | render.prompt | Lambda / String | `->(width) { ('-' * width) << '>' }` |
 | render.highlight.fg | Symbol | `:black` |
 | render.highlight.bg | Symbol | `:yellow` |
@@ -73,6 +75,8 @@ class MyQuery < Omnibar::Query
   end
 end
 ```
+
+If you think other people might like your query, please feel free to submit a pull reqest. I'm open to including any good ideas.
 
 ## OS Limitations
 

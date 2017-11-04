@@ -27,10 +27,6 @@ module Omnibar
     setting :sites, []
   end
 
-  setting :spell do
-    setting :dict, '/usr/share/dict/american-english'
-  end
-
   setting :snippets, 'shrug' => '¯\_(ツ)_/¯'
 
   setting :render do
