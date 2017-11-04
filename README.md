@@ -14,7 +14,9 @@ Install as:
 
 ## Usage
 
-Run `bin/omnibar` and start typing. Use the arrow keys to select the result you like, and press enter to go!
+Run `omnibar` and start typing. Use the arrow keys to select the result you like, and press enter to go!
+
+Read about an optimal omnibar setup in the wiki: [Omnibar & i3](https://github.com/shreve/omnibar/wiki/Omnibar-&-i3)
 
 ## Queries
 
