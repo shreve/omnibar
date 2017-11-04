@@ -51,6 +51,8 @@ module Omnibar
         self.selection = [selection - 1, 0].max
       when "\e[B"
         self.selection = [selection + 1, visible_queries.count - 1].min
+      when "\e\e"
+        self.input = ""
       when "\r"
         perform_action!
       else
@@ -68,7 +70,6 @@ module Omnibar
       visible_queries[selection]&.perform!
       self.input = ""
       Omnibar.config.events.after_perform.call
-      # TODO: after_perform callback
     end
 
     def queries

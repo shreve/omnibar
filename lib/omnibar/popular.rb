@@ -1,16 +1,13 @@
+require 'fuzzy_match'
+
 module Omnibar
   class Popular < Query
     def result
-      case input
-      when /^news/
-        'news.ycombinator.com'
-      when /^redd?i?t?/
-        'reddit.com'
-      when /^fac?e?b?o?o?k?/
-        "[facebook] you're bad and you should feel bad"
-      when /^twit?t?e?r?/
-        'twitter.com'
-      end
+      search.find(input)
+    end
+
+    def search
+      @fm ||= FuzzyMatch.new(Omnibar.config.popular.sites)
     end
 
     def perform!

@@ -6,14 +6,18 @@ require 'omnibar/app'
 require 'omnibar/calculate'
 require 'omnibar/github'
 require 'omnibar/popular'
-require 'omnibar/google'
 require 'omnibar/duck_duck_go'
+require 'omnibar/google'
 
 module Omnibar
   extend Dry::Configurable
 
   setting :github do
     setting :repos, []
+  end
+
+  setting :popular do
+    setting :sites, []
   end
 
   setting :render do

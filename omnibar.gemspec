@@ -1,4 +1,3 @@
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'omnibar/version'
@@ -22,6 +21,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'dry-configurable', '~> 0.7.0'
+  spec.add_dependency 'fuzzy_match', '~> 2.1.0'
+
   spec.add_development_dependency 'bundler', '~> 1.16.a'
   spec.add_development_dependency 'rake', '~> 10.0'
 end
