@@ -52,6 +52,26 @@ end
 | render.highlight.bg | Symbol | `:yellow` |
 | events.after_perform | Lambda | `-> {}` |
 
+Create your own queries by adding the code to your config file. Your class simply needs to extend from `Omnibar::Query`
+
+```ruby
+class MyQuery < Omnibar::Query
+  def result
+    # The string that should be displayed inside the preview
+    # If this is null, the query won't be included
+
+    input # The current input value
+  end
+
+  def perform!
+    # Execute the query
+
+    copy_to_clipboard input
+    open_in_browser "https://#{input}"
+  end
+end
+```
+
 ## OS Limitations
 
 This gem has been developed on Ubuntu, and should work on most linux distributions.
