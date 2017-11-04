@@ -67,6 +67,7 @@ module Omnibar
     def perform_action!
       visible_queries[selection]&.perform!
       self.input = ""
+      Omnibar.config.events.after_perform.call
       # TODO: after_perform callback
     end
 

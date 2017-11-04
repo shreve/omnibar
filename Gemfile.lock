@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    omnibar (0.0.1)
+    omnibar (0.0.2)
       dry-configurable (~> 0.7.0)
 
 GEM

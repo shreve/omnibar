@@ -19,14 +19,22 @@ module Omnibar
           rpad(result.last, ANSI.size[:width] - max_label_length - 2)
         ].join(': ')
 
-        text = ANSI.color(text, fg: :black, bg: :yellow) if i == selection
+        if i == selection
+          text = ANSI.color(text,
+                            fg: Omnibar.config.render.highlight.fg,
+                            bg: Omnibar.config.render.highlight.bg)
+        end
         print "#{text}\r\n"
       end
       ANSI.move_cursor(0, input_line.length)
     end
 
     def input_line
-      ('-' * max_label_length) << '> ' << input
+      prompt = Omnibar.config.render.prompt
+      if prompt.respond_to?(:call)
+        prompt = prompt.call(max_label_length)
+      end
+      "#{prompt} #{input}"
     end
 
     def rpad(text, length = ANSI.size[:width])
