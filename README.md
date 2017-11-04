@@ -16,11 +16,25 @@ Install as:
 
 Run `bin/omnibar` and start typing. Use the arrow keys to select the result you like, and press enter to go!
 
-## Development
+## Configuration
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Omnibar looks at the file `~/.omnibar` to configure the app. This file is executed as ruby.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+#!/usr/bin/env ruby
+
+Omnibar.configure do |omnibar|
+  omnibar.key = "value"
+end
+```
+
+| Config Key | Type | Default |
+|------------|------|---------|
+| github.repos | Array | `[]` |
+| render.prompt | Lambda / String | `->(width) { ('-' * width) << '>' }` |
+| render.highlight.fg | Symbol | `:black` |
+| render.highlight.bg | Symbol | `:yellow` |
+| events.after_perform | Lambda | `-> {}` |
 
 ## Contributing
 
