@@ -6,18 +6,10 @@ require 'amatch'
 require 'omnibar/version'
 require 'omnibar/app'
 
-require 'omnibar/calculate'
-require 'omnibar/emoji'
-require 'omnibar/spell'
-require 'omnibar/system'
-require 'omnibar/snippet'
-require 'omnibar/github'
-require 'omnibar/popular'
-require 'omnibar/duck_duck_go'
-require 'omnibar/google'
-
 module Omnibar
   extend Dry::Configurable
+
+  setting :queries, []
 
   setting :github do
     setting :repos, []
@@ -49,3 +41,11 @@ module Omnibar
 end
 
 FuzzyMatch.engine = :amatch
+
+# Require all the queries
+dir = File.join(File.dirname(File.expand_path(__FILE__)), 'omnibar/queries')
+Dir["#{dir}/*.rb"].each { |file| require file }
+
+# Move fallback queries to the end
+Omnibar.config.queries << Omnibar.config.queries.delete(Omnibar::DuckDuckGo)
+Omnibar.config.queries << Omnibar.config.queries.delete(Omnibar::Google)

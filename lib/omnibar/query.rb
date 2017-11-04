@@ -8,7 +8,7 @@ module Omnibar
     end
 
     def self.inherited(subclass)
-      Omnibar::App.add_query(subclass)
+      Omnibar.config.queries.push(subclass)
       super(subclass)
     end
 

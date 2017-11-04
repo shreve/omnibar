@@ -11,12 +11,6 @@ module Omnibar
     attr_accessor :input
     attr_accessor :selection
 
-    @@queries = []
-
-    def self.add_query(query)
-      @@queries.push(query)
-    end
-
     def initialize
       @input = ''
       @selection = 0
@@ -73,7 +67,7 @@ module Omnibar
     end
 
     def queries
-      @@queries.map { |q| q.new(input) }
+      Omnibar.config.queries.map { |q| q.new(input) }
     end
 
     def visible_queries
