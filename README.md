@@ -16,6 +16,22 @@ Install as:
 
 Run `bin/omnibar` and start typing. Use the arrow keys to select the result you like, and press enter to go!
 
+## Queries
+
+Omnibar is powered by queries. These are the built-in ones:
+
+| Name | Description |
+|------|-------------|
+| Calculate | Evaluate math expressions (powered by Math module) |
+| Emoji | Search for emojis by name |
+| Spell | Fuzzy search for the correct spelling of a word |
+| System | Run system commands like sleep, reboot, and shutdown |
+| Snippet | Access named user-provided snippets |
+| GitHub | Access user-provided GitHub repos, or quick open a repo |
+| Popular | Access user-provided popular websites |
+| DuckDuckGo | Search via Duck Duck Go |
+| Google | Search via Google |
+
 ## Configuration
 
 Omnibar looks at the file `~/.omnibar` to configure the app. This file is executed as ruby.
