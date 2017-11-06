@@ -31,6 +31,7 @@ module Omnibar
   end
 
   setting :events do
+    setting :after_start, -> {}
     setting :after_perform, -> {}
   end
 

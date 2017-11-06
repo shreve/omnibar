@@ -15,6 +15,7 @@ module Omnibar
       @input = ''
       @selection = 0
       Omnibar.load_config
+      Omnibar.config.events.after_start.call(self)
     end
 
     def run
@@ -54,6 +55,7 @@ module Omnibar
       end
     end
 
+    # TODO: Sort results based on relevance / certainty
     def results
       return [] if input.empty?
 

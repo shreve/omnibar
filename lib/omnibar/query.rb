@@ -1,6 +1,5 @@
 module Omnibar
   class Query
-
     attr_reader :input
 
     def initialize(input)
@@ -12,6 +11,8 @@ module Omnibar
       super(subclass)
     end
 
+    # TODO: Convert result to class
+    # TODO: Allow multiple results per query
     def preview_text
       res = result
       name = self.class.name.split('::').last
