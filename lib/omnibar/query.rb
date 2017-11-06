@@ -3,7 +3,7 @@ module Omnibar
     attr_reader :input
 
     def initialize(input)
-      @input = input
+      @input = input.strip
     end
 
     def self.inherited(subclass)
@@ -16,12 +16,14 @@ module Omnibar
     def preview_text
       res = result
       name = self.class.name.split('::').last
-      [name, res] unless result.nil? || result.empty?
+      [name, res.strip] unless res.nil? || res.empty?
     end
 
     def result
       input
     end
+
+    def perform!; end
 
     def copy_to_clipboard(value)
       `echo "#{value}" | xsel -i --clipboard`

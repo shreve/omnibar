@@ -2,18 +2,10 @@
 
 require 'io/console'
 
-require_relative 'ansi'
-require_relative 'query'
-require_relative 'renderer'
-
 module Omnibar
   class App
-    attr_accessor :input
-    attr_accessor :selection
-
     def initialize
-      @input = ''
-      @selection = 0
+      reset_state!
       Omnibar.load_config
       Omnibar.config.events.after_start.call(self)
     end
@@ -30,50 +22,46 @@ module Omnibar
     end
 
     def render
-      Renderer.new(input, results, selection).render!
+      previous = @current_view
+      @current_view = View.new(@state)
+      Renderer.new(@state).render_diff(previous, @current_view)
     end
 
     def handle_input(prefix = '')
       char = prefix << $stdin.getc
+      LOG.info "Handling: #{char.inspect}"
       case char
       when "\u0003" # ctrl-c
         quit
       when "\u007F" # backspace
-        self.input = input[0..-2]
+        @state.backspace
       when "\e", "\e["
         handle_input(char)
-      when "\e[A"
-        self.selection = [selection - 1, 0].max
-      when "\e[B"
-        self.selection = [selection + 1, visible_queries.count - 1].min
+      when "\e[A" # Up Arrow
+        @state.select_up
+      when "\e[B" # Down Arrow
+        @state.select_down
+      when "\e[C"
+        @state.move_cursor_left
+      when "\e[D"
+        @state.move_cursor_right
       when "\e\e"
-        self.input = ""
+        reset_state!
       when "\r"
         perform_action!
+        reset_state!
       else
-        input << char
+        @state.add_to_input(char)
       end
     end
 
-    # TODO: Sort results based on relevance / certainty
-    def results
-      return [] if input.empty?
-
-      queries.map(&:preview_text).compact
+    def reset_state!
+      @state = State.new
     end
 
     def perform_action!
-      visible_queries[selection]&.perform!
-      self.input = ""
+      @state.current_query.perform!
       Omnibar.config.events.after_perform.call
-    end
-
-    def queries
-      Omnibar.config.queries.map { |q| q.new(input) }
-    end
-
-    def visible_queries
-      queries.reject { |q| q.preview_text.nil? }
     end
 
     def quit

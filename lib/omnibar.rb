@@ -3,10 +3,18 @@ require 'dry-configurable'
 require 'fuzzy_match'
 require 'amatch'
 
-require 'omnibar/version'
-require 'omnibar/app'
+require_relative 'ansi'
+
+require_relative 'omnibar/version'
+require_relative 'omnibar/app'
+require_relative 'omnibar/query'
+require_relative 'omnibar/renderer'
+require_relative 'omnibar/state'
+require_relative 'omnibar/view'
 
 module Omnibar
+  LOG = Logger.new('log/omnibar.log')
+
   extend Dry::Configurable
 
   setting :queries, []
@@ -22,7 +30,7 @@ module Omnibar
   setting :snippets, 'shrug' => '¯\_(ツ)_/¯'
 
   setting :render do
-    setting :prompt, ->(width) { ('-' * width) << '>' }
+    setting :prompt, ->(width) { ('—' * width) << '>' }
 
     setting :highlight do
       setting :fg, :black
@@ -31,7 +39,7 @@ module Omnibar
   end
 
   setting :events do
-    setting :after_start, -> {}
+    setting :after_start, ->(app) {}
     setting :after_perform, -> {}
   end
 

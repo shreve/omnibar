@@ -2,6 +2,7 @@ module Omnibar
   class Emoji < Query
 
     def result
+      return if input.empty?
       key = search.find(input)
       value = DICTIONARY[key]
 
