@@ -48,12 +48,14 @@ end
 
 | Config Key | Type | Default |
 |------------|------|---------|
+| queries    | Array | Every class that inherits from Query |
 | github.repos | Array | `[]` |
 | popular.sites | Array | `[]` |
 | snippets | Hash | `{ 'shrug' => '¯\_(ツ)_/¯' }` |
 | render.prompt | Lambda / String | `->(width) { ('-' * width) << '>' }` |
 | render.highlight.fg | Symbol | `:black` |
 | render.highlight.bg | Symbol | `:yellow` |
+| events.after_start | Lambda | `-> {}` |
 | events.after_perform | Lambda | `-> {}` |
 
 Create your own queries by adding the code to your config file. Your class simply needs to extend from `Omnibar::Query`
@@ -77,6 +79,8 @@ end
 ```
 
 If you think other people might like your query, please feel free to submit a pull reqest. I'm open to including any good ideas.
+
+If you don't want a query to run, delete it from `Omnibar.queries`.
 
 ## OS Limitations
 
