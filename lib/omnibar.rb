@@ -30,7 +30,7 @@ module Omnibar
   setting :snippets, 'shrug' => '¯\_(ツ)_/¯'
 
   setting :render do
-    setting :prompt, ->(width) { ('—' * width) << '>' }
+    setting :prompt, ->(width) { (' ' * width) << ANSI.color('★', fg: :magenta) }
 
     setting :highlight do
       setting :fg, :black

@@ -59,7 +59,7 @@ module Omnibar
     end
 
     def max_label_length
-      @mll ||= @state.results.map(&:first).map(&:length).max || 10
+      @mll ||= (@state.results.map(&:first).map(&:length).max || 0) + 1
     end
 
     def non_ascii_chars(string)
