@@ -13,8 +13,6 @@ require_relative 'omnibar/state'
 require_relative 'omnibar/view'
 
 module Omnibar
-  LOG = Logger.new('log/omnibar.log')
-
   extend Dry::Configurable
 
   setting :queries, []

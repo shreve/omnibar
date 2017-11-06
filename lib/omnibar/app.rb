@@ -29,7 +29,6 @@ module Omnibar
 
     def handle_input(prefix = '')
       char = prefix << $stdin.getc
-      LOG.info "Handling: #{char.inspect}"
       case char
       when "\u0003" # ctrl-c
         quit

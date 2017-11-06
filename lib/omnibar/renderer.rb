@@ -5,7 +5,6 @@ module Omnibar
     end
 
     def render(view)
-      LOG.info "Rendering view: #{view.inspect}"
       ANSI.clear_screen
       ANSI.move_cursor(0, 0)
       print view.render.join("\e[2K \r\n")
@@ -14,7 +13,6 @@ module Omnibar
 
     def render_diff(previous, current)
       return render(current) if previous.nil?
-      LOG.info "Rendering diff: #{previous.inspect} --- #{current.inspect}"
 
       lines = [previous.length, current.length].max
       lines.times.each do |i|
