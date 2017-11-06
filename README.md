@@ -89,7 +89,7 @@ All the code is in ruby, but there are several dependencies that are linux-only.
 
 | Library | Usage | Notes |
 |---------|-------|-------|
-| ~~xdg-open~~ | Opening urls and files | Replaced with `launchy` gem, which should support all platforms |
+| xdg-open | Opening urls and files |  |
 | GNU aspell | Spell checking and suggestions | Possibly installable on OS X using homebrew |
 
 ## Contributing

@@ -1,5 +1,3 @@
-require 'launchy'
-
 module Omnibar
   class Query
     attr_reader :input
@@ -32,7 +30,11 @@ module Omnibar
     end
 
     def open_in_browser(url)
-      Launchy.open(url)
+      Thread.new { run_silently 'xdg-open', url }
+    end
+
+    def run_silently(*command)
+      `#{command.join(' ')} >/dev/null 2>&1`
     end
   end
 end
