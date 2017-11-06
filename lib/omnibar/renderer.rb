@@ -26,7 +26,8 @@ module Omnibar
                             fg: Omnibar.config.render.highlight.fg,
                             bg: Omnibar.config.render.highlight.bg)
         end
-        print "#{text}\r\n"
+        ANSI.move_cursor(i + 1, 0)
+        print text
       end
       ANSI.move_cursor(0, input_line.length)
     end
