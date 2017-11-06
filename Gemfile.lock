@@ -6,10 +6,13 @@ PATH
       dry-configurable (~> 0.7.0)
       ffi-aspell (~> 1.1, >= 1.1.0)
       fuzzy_match (~> 2.1, >= 2.1.0)
+      launchy (~> 2.4.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     amatch (0.4.0)
       mize
       tins (~> 1.0)
@@ -20,10 +23,13 @@ GEM
     ffi-aspell (1.1.0)
       ffi
     fuzzy_match (2.1.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     mize (0.3.4)
       protocol
     protocol (1.0.1)
       ruby_parser (~> 3.0)
+    public_suffix (3.0.0)
     rake (10.5.0)
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)

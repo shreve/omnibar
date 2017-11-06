@@ -87,10 +87,10 @@ If you don't want a query to run, delete it from `Omnibar.queries`.
 This gem has been developed on Ubuntu, and should work on most linux distributions.
 All the code is in ruby, but there are several dependencies that are linux-only.
 
-| Library | Usage |
-|---------|-------|
-| xdg-open | Opening urls and files |
-| GNU aspell | Spell checking and suggestions |
+| Library | Usage | Notes |
+|---------|-------|-------|
+| ~~xdg-open~~ | Opening urls and files | Replaced with `launchy` gem, which should support all platforms |
+| GNU aspell | Spell checking and suggestions | Possibly installable on OS X using homebrew |
 
 ## Contributing
 

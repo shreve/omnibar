@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'fuzzy_match', '~> 2.1', '>= 2.1.0'
   spec.add_runtime_dependency 'amatch', '~> 0.4.0'
   spec.add_runtime_dependency 'ffi-aspell', '~> 1.1', '>= 1.1.0'
+  spec.add_runtime_dependency 'launchy', '~> 2.4.3'
 
   spec.add_development_dependency 'bundler', '~> 1.16.a'
   spec.add_development_dependency 'rake', '~> 10.0'
