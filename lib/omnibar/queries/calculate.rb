@@ -26,3 +26,7 @@ module Omnibar
     end
   end
 end
+
+class Integer
+  alias ^ **
+end
