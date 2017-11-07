@@ -4,5 +4,9 @@ module Omnibar
       param = input.gsub(/\s/, '+')
       open_in_browser "https://duckduckgo.com/?q=#{param}"
     end
+
+    def label
+      ANSI.color('Duck Duck Go', fg: :red3)
+    end
   end
 end

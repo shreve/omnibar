@@ -15,12 +15,15 @@ module Omnibar
     # TODO: Allow multiple results per query
     def preview_text
       res = result
-      name = self.class.name.split('::').last.gsub(/[A-Z]/) { |w| ' ' << w }.strip
-      [name, res.strip] unless res.nil? || res.empty?
+      [label, res.strip] unless res.nil? || res.empty?
     end
 
     def result
       input
+    end
+
+    def label
+      self.class.name.split('::').last.gsub(/[A-Z]/) { |w| ' ' << w }.strip
     end
 
     def perform!; end

@@ -31,13 +31,14 @@ module Omnibar
     setting :prompt, ->(width) { (' ' * width) << ANSI.color('★', fg: :magenta) }
 
     setting :highlight do
-      setting :fg, :black
-      setting :bg, :yellow
+      setting :fg, :white
+      setting :bg, :grey15
     end
   end
 
   setting :events do
     setting :after_start, ->(app) {}
+    setting :keypress, ->(state) {}
     setting :after_perform, -> {}
   end
 

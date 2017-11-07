@@ -52,6 +52,8 @@ module Omnibar
       else
         @state.add_to_input(char)
       end
+
+      Omnibar.config.events.keypress.call(@state)
     end
 
     def reset_state!

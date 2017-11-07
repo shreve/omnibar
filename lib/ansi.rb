@@ -1,10 +1,12 @@
+require 'json'
+
 # This module contains helpers for various ansi-code operations
 module ANSI
   # ANSI color escape codes set the foreground and background colors.
   # Forground color is a number between 30 and 37.
   # Background color is a number between 40 and 47.
   # The ones place represents the same color for both.
-  COLORS = [:black, :red, :green, :yellow, :blue, :magenta, :cyan, 'white', nil, :white].freeze
+  COLORS = JSON.parse(File.read(File.expand_path('../db/ansi.json', File.dirname(__FILE__)))).freeze
 
   def self.clear_screen
     $stdout.write "\e[2J"
@@ -21,15 +23,20 @@ module ANSI
     move_cursor(row, col)
   end
 
-  def self.color(text, fg: :white, bg: :black)
-    fg = COLORS.index(fg) + 30
-    bg = COLORS.index(bg) + 40
-    code = "\e[#{[fg, bg].compact.join(';')}m"
-    "#{code}#{text}\e[0m"
+  def self.color(text, fg: nil, bg: nil, res: true)
+    fg = COLORS[@private.snake_to_camel(fg)] if fg
+    bg = COLORS[@private.snake_to_camel(bg)] if bg
+    fg = "\e[38;5;#{fg}m" if fg
+    bg = "\e[48;5;#{bg}m" if bg
+    "#{fg}#{bg}#{text}#{reset if res}"
   end
 
   def self.reset
     "\e[0m"
+  end
+
+  def self.strip(text)
+    text.gsub(/\e\[[0-9,;]+\w/, '')
   end
 
   def self.position
@@ -54,5 +61,29 @@ module ANSI
       height: win[0],
       width: win[1]
     }
+  end
+
+  def self.print_colors
+    colors = COLORS.keys.count
+    groups = COLORS.to_a.sort_by { |p| p[1] }.each_slice(colors / 3).to_a.map(&:to_h)
+
+    groups.first.keys.length.times.each do |i|
+      3.times do |j|
+        name = groups[j].keys[i]
+        code = groups[j][name]
+
+        pad = ' ' * (40 - (name.length * 2))
+        lpad = ' ' * (3 - code.digits.count)
+        print "#{lpad}#{code} \e[38;5;#{code}m#{name}\e[0m \e[48;5;#{code}m#{name}\e[0m #{pad}"
+      end
+      print "\n"
+    end
+    true
+  end
+
+  @private = Module.new do
+    def self.snake_to_camel(string)
+      string.to_s.split('_').map(&:capitalize).join
+    end
   end
 end

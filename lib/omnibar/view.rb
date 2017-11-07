@@ -36,30 +36,34 @@ module Omnibar
         text = [
           lpad(result.first, max_label_length),
           rpad(result.last, ANSI.size[:width] - max_label_length - 2)
-        ].join(': ')
+        ]
 
         if i == @state.selection
-          text = ANSI.color(text,
-                            fg: Omnibar.config.render.highlight.fg,
-                            bg: Omnibar.config.render.highlight.bg)
+          text.map { |t| highlight(t) }.join(highlight(': '))
+        else
+          text.join(': ')
         end
-
-        text
       end
     end
 
+    def highlight(text)
+      ANSI.color(text,
+                 fg: Omnibar.config.render.highlight.fg,
+                 bg: Omnibar.config.render.highlight.bg)
+    end
+
     def rpad(text, length = ANSI.size[:width])
-      textlength = text.length + non_ascii_chars(text).length
+      textlength = ANSI.strip(text).length + non_ascii_chars(text).length
       text + (' ' * [0, (length - textlength)].max)
     end
 
     def lpad(text, length = ANSI.size[:width])
-      textlength = text.length + non_ascii_chars(text).length
+      textlength = ANSI.strip(text).length + non_ascii_chars(text).length
       (' ' * [0, (length - textlength)].max) + text
     end
 
     def max_label_length
-      @mll ||= (@state.results.map(&:first).map(&:length).max || 0) + 1
+      @mll ||= (@state.results.map(&:first).map { |s| ANSI.strip(s) }.map(&:length).max || 0) + 1
     end
 
     def non_ascii_chars(string)
