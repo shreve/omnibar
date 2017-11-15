@@ -3,18 +3,21 @@ module Omnibar
     include Math
 
     def result
-      v = value
-      [sanitized_input, v].join(' = ') if v
+      if value.is_a?(Integer)
+        [sanitized_input, value].join(' = ')
+      else
+        value.to_s
+      end
+    end
+
+    def value
+      @value ||= eval('(' + sanitized_input + ').to_f')
     rescue ZeroDivisionError
       'Division by zero is undefined'
     rescue Math::DomainError => e
       e.message
     rescue StandardError, SyntaxError => e
       nil
-    end
-
-    def value
-      eval('(' + sanitized_input + ').to_f')
     end
 
     def perform!
