@@ -2,6 +2,7 @@
 require 'dry-configurable'
 require 'fuzzy_match'
 require 'amatch'
+require 'logger'
 
 require_relative 'ansi'
 
@@ -14,6 +15,8 @@ require_relative 'omnibar/view'
 
 module Omnibar
   extend Dry::Configurable
+
+  setting :log, Logger.new('log/omnibar.log'), reader: true
 
   setting :queries, []
 

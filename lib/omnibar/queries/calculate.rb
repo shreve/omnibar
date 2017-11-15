@@ -26,6 +26,7 @@ module Omnibar
 
     def sanitized_input
       input.gsub(/(\D)\./, '\10.')
+        .gsbu('sleep', '')
     end
 
     def pi

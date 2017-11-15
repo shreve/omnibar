@@ -23,7 +23,6 @@ module Omnibar
         print current[i]
       end
 
-      ANSI
       print current.cursor_position
     end
   end

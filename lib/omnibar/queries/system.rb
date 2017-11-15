@@ -21,7 +21,7 @@ module Omnibar
     end
 
     def perform!
-      puts COMMANDS[result]
+      run_silently COMMANDS[result]
     end
   end
 end
