@@ -9,6 +9,7 @@ module Omnibar
     def self.inherited(subclass)
       Omnibar.config.queries.push(subclass)
       super(subclass)
+      subclass.prepend(MethodAugmentations)
     end
 
     # TODO: Convert result to class
@@ -38,6 +39,13 @@ module Omnibar
 
     def run_silently(*command)
       `#{command.join(' ')} >/dev/null 2>&1`
+    end
+
+    module MethodAugmentations
+      def result
+        return if input == ''
+        super
+      end
     end
   end
 end
