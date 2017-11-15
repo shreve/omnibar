@@ -27,6 +27,10 @@ module Omnibar
       self.class.name.split('::').last.gsub(/[A-Z]/) { |w| ' ' << w }.strip
     end
 
+    def search
+      self.class.search
+    end
+
     def perform!; end
 
     def copy_to_clipboard(value)

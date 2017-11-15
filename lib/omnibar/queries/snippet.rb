@@ -14,10 +14,6 @@ module Omnibar
       @fz ||= FuzzyMatch.new(Omnibar.config.snippets.keys)
     end
 
-    def search
-      self.class.search
-    end
-
     def perform!
       key = search.find(input)
       copy_to_clipboard snippets[key]

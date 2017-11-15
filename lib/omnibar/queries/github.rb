@@ -6,8 +6,8 @@ module Omnibar
       return input if input.match?(/^[\w-]+\/[\w-]+$/)
     end
 
-    def search
-      @fm = FuzzyMatch.new(Omnibar.config.github.repos)
+    def self.search
+      @fm ||= FuzzyMatch.new(Omnibar.config.github.repos)
     end
 
     def perform!

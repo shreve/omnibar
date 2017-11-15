@@ -4,7 +4,7 @@ module Omnibar
       search.find(input)
     end
 
-    def search
+    def self.search
       @fm ||= FuzzyMatch.new(Omnibar.config.popular.sites)
     end
 
