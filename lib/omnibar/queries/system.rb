@@ -16,6 +16,10 @@ module Omnibar
       search.find(input)
     end
 
+    def relevance
+      input.levenshtein_similar(result)
+    end
+
     def search
       @fz ||= FuzzyMatch.new(COMMANDS.keys)
     end

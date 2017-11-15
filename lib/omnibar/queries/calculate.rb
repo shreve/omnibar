@@ -11,12 +11,12 @@ module Omnibar
     end
 
     def value
-      @value ||= eval('(' + sanitized_input + ').to_f')
+      @value ||= eval('(' + sanitized_input + '.to_f).round(3)')
     rescue ZeroDivisionError
       'Division by zero is undefined'
     rescue Math::DomainError => e
       e.message
-    rescue StandardError, SyntaxError => e
+    rescue StandardError, SyntaxError
       nil
     end
 
@@ -25,8 +25,13 @@ module Omnibar
     end
 
     def sanitized_input
-      input.gsub(/(\D)\./, '\10.')
-        .gsbu('sleep', '')
+      input
+        .gsub(/(\D)\./, '\10.')
+        .gsub('sleep', '')
+    end
+
+    def relevance
+      !value.nil?
     end
 
     def pi

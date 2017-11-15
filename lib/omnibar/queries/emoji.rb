@@ -3,14 +3,23 @@ module Omnibar
 
     def result
       return if input.empty?
-      key = search.find(input)
-      value = DICTIONARY[key]
-
       "#{key} :: #{value}" if (key and value)
     end
 
     def self.search
       @fm ||= FuzzyMatch.new(DICTIONARY.keys)
+    end
+
+    def key
+      search.find(input)
+    end
+
+    def value
+      DICTIONARY[key]
+    end
+
+    def relevance
+      input.levenshtein_similar(key)
     end
 
     def perform!

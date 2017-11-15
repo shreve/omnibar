@@ -8,6 +8,10 @@ module Omnibar
       @fm ||= FuzzyMatch.new(Omnibar.config.popular.sites)
     end
 
+    def relevance
+      input.levenshtein_similar(result)
+    end
+
     def perform!
       return if input.match?(/^fac?e?b?o?o?k?/)
       open_in_browser "https://#{result}"

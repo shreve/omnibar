@@ -3,7 +3,11 @@ require 'ffi/aspell'
 module Omnibar
   class Spell < Query
     def result
-      speller.suggestions(input.split(' ').last).first if input.match?(/^spe?l?l? \w+/)
+      return unless using_keyword?
+
+      words = input.split(' ')
+      return ' ' if words.length == 1
+      speller.suggestions(words.last).first
     end
 
     def self.speller
@@ -16,6 +20,15 @@ module Omnibar
 
     def perform!
       copy_to_clipboard result
+    end
+
+    def using_keyword?
+      input.match?(/^spe?l?l?/)
+    end
+
+    def relevance
+      return 1 if using_keyword?
+      0
     end
   end
 end

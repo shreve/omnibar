@@ -3,7 +3,7 @@ module Omnibar
     def result
       repo = search.find(input)
       return repo if repo
-      return input if input.match?(/^[\w-]+\/[\w-]+$/)
+      return input if repo_full_name?
     end
 
     def self.search
@@ -13,6 +13,18 @@ module Omnibar
     def perform!
       param = result.downcase.gsub(/\s/, '-')
       open_in_browser "https://github.com/#{param}"
+    end
+
+    def relevance
+      if repo_full_name?
+        0.75
+      else
+        input.levenshtein_similar(result)
+      end
+    end
+
+    def repo_full_name?
+      input.match?(/^[\w-]+\/[\w-]+$/)
     end
   end
 end

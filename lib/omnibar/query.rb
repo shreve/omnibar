@@ -31,6 +31,10 @@ module Omnibar
       self.class.search
     end
 
+    def relevance
+      0
+    end
+
     def perform!; end
 
     def copy_to_clipboard(value)
@@ -49,6 +53,13 @@ module Omnibar
       def result
         return if input == ''
         super
+      end
+
+      def relevance
+        value = super
+        value = 1 if value == true
+        Omnibar.log.info "#{self.class}: #{value}"
+        value
       end
     end
   end

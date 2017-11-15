@@ -56,7 +56,3 @@ FuzzyMatch.engine = :amatch
 # Require all the queries
 dir = File.join(File.dirname(File.expand_path(__FILE__)), 'omnibar/queries')
 Dir["#{dir}/*.rb"].each { |file| require file }
-
-# Move fallback queries to the end
-Omnibar.config.queries << Omnibar.config.queries.delete(Omnibar::DuckDuckGo)
-Omnibar.config.queries << Omnibar.config.queries.delete(Omnibar::Google)

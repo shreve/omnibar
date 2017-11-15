@@ -1,13 +1,20 @@
 module Omnibar
   class Snippet < Query
     def result
-      key = search.find(input)
       value = snippets[key]
       "#{key} :: #{value}" if (key and value)
     end
 
     def snippets
       Omnibar.config.snippets
+    end
+
+    def key
+      search.find(input)
+    end
+
+    def relevance
+      input.levenshtein_similar(key)
     end
 
     def self.search

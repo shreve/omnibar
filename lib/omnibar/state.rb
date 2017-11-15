@@ -47,7 +47,7 @@ module Omnibar
 
     # TODO: Sort results based on relevance / certainty
     def results
-      visible_queries.map(&:preview_text)
+      visible_queries.sort_by(&:relevance).reverse.map(&:preview_text)
     end
   end
 end
