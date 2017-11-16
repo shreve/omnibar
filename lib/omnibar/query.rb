@@ -3,7 +3,7 @@ module Omnibar
     attr_reader :input
 
     def initialize(input)
-      @input = input.strip
+      @input = input
     end
 
     def self.inherited(subclass)
@@ -46,7 +46,7 @@ module Omnibar
     end
 
     def run_silently(*command)
-      `#{command.join(' ')} >/dev/null 2>&1`
+      `#{command.join(' ')} >/dev/null 2>&1 &`
     end
 
     module MethodAugmentations
@@ -58,7 +58,7 @@ module Omnibar
       def relevance
         value = super
         value = 1 if value == true
-        Omnibar.log.info "#{self.class}: #{value}"
+        value = 0.01 unless value
         value
       end
     end

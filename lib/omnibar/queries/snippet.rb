@@ -14,7 +14,7 @@ module Omnibar
     end
 
     def relevance
-      input.levenshtein_similar(key)
+      input.levenshtein_similar(key) if result
     end
 
     def self.search

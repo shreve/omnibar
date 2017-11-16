@@ -34,7 +34,7 @@ module Omnibar
     end
 
     def queries
-      Omnibar.config.queries.map { |q| q.new(input) }
+      Omnibar.config.queries.map { |q| q.new(input) }.sort_by(&:relevance).reverse
     end
 
     def visible_queries
@@ -47,7 +47,7 @@ module Omnibar
 
     # TODO: Sort results based on relevance / certainty
     def results
-      visible_queries.sort_by(&:relevance).reverse.map(&:preview_text)
+      visible_queries.map(&:preview_text)
     end
   end
 end

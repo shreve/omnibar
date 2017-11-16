@@ -18,7 +18,7 @@ module Omnibar
     def relevance
       if repo_full_name?
         0.75
-      else
+      elsif result
         input.levenshtein_similar(result)
       end
     end
