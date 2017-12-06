@@ -16,7 +16,7 @@ require_relative 'omnibar/view'
 module Omnibar
   extend Dry::Configurable
 
-  setting :log, Logger.new('log/omnibar.log'), reader: true
+  setting :log, Logger.new('log/omnibar.log'), reader: true rescue nil
 
   setting :queries, []
 
