@@ -42,7 +42,7 @@ module Omnibar
     end
 
     def current_query
-      visible_queries[selection] || Query.new
+      visible_queries[selection] || Query.new('')
     end
 
     # TODO: Sort results based on relevance / certainty
