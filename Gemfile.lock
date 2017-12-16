@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    omnibar (0.0.6)
+    omnibar (0.0.7)
       amatch (~> 0.4.0)
       dry-configurable (~> 0.7.0)
       ffi-aspell (~> 1.1, >= 1.1.0)
@@ -28,7 +28,7 @@ GEM
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)
     sexp_processor (4.10.0)
-    tins (1.15.0)
+    tins (1.16.3)
 
 PLATFORMS
   ruby
