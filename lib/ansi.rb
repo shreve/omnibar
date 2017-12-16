@@ -12,6 +12,14 @@ module ANSI
     $stdout.write "\e[2J"
   end
 
+  def self.save_screen
+    $stdout.write `tput smcup`
+  end
+
+  def self.restore_screen
+    $stdout.write `tput rmcup`
+  end
+
   def self.move_cursor(row, col)
     $stdout.write "\e[#{row + 1};#{col + 1}H"
   end

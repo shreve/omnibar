@@ -11,7 +11,7 @@ module Omnibar
     end
 
     def key
-      search.find(input)
+      search.find(input) || ''
     end
 
     def value

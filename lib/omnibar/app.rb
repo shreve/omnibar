@@ -12,7 +12,7 @@ module Omnibar
 
     def run
       IO.console.raw do
-        ANSI.clear_screen
+        ANSI.save_screen
         ANSI.move_cursor(0, 0)
         loop do
           render
@@ -36,9 +36,9 @@ module Omnibar
         @state.backspace
       when "\e", "\e["
         handle_input(char)
-      when "\e[A" # Up Arrow
+      when "\e[A", "\v" # Up Arrow, ctrl-k
         @state.select_up
-      when "\e[B" # Down Arrow
+      when "\e[B", "\n" # Down Arrow, ctrl-j
         @state.select_down
       when "\e[C"
         @state.move_cursor_left
@@ -50,6 +50,7 @@ module Omnibar
         perform_action!
         reset_state!
       else
+        puts char.inspect
         @state.add_to_input(char)
       end
 
@@ -66,7 +67,7 @@ module Omnibar
     end
 
     def quit
-      ANSI.clear_screen
+      ANSI.restore_screen
       exit 0
     end
   end
