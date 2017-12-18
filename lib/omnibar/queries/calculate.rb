@@ -28,6 +28,7 @@ module Omnibar
       input
         .gsub(/(\D)\./, '\10.')
         .gsub('sleep', '')
+        .gsub('exit', '')
     end
 
     def relevance
