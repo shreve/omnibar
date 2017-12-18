@@ -50,7 +50,6 @@ module Omnibar
         perform_action!
         reset_state!
       else
-        puts char.inspect
         @state.add_to_input(char)
       end
 
